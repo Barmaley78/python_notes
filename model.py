@@ -48,6 +48,7 @@ def read_note(path, id):
     else:
         print("нет ни одной заметки")
     print_note(note)
+    print()
     
 def delete_note(path, id):
     notes = []
@@ -59,10 +60,23 @@ def delete_note(path, id):
         writer = csv.writer(file, delimiter=";")
         for i in notes:
             writer.writerow(i)
-        # note = []
-        # note.append(id)
-        # note.append(note_name)
-        # note.append(note_text)
-        # note.append(datetime.datetime.now().strftime("%H:%M:%S"))
-        # note.append(datetime.date.today().strftime("%d %b %Y"))
-        # writer.writerow(note)
+        
+def edit_note(path, id):
+    notes = []
+    with open(path, 'r') as file:
+        reader = csv.reader(file, delimiter=";")
+        for i in reader:
+            if int(i[0]) == id: 
+                print("Заголовок заметки: " + i[1] + " если хотите изменить, введите новое значение или нажмине Enter")
+                temp_title = input()
+                if temp_title != '': i[1] = temp_title
+                print("Текст заметки: " + i[2] + " если хотите изменить, введите новое значение или нажмине Enter")
+                temp_text = input()
+                if temp_text != '': i[2] = temp_text
+                i[3] = datetime.datetime.now().strftime("%H:%M:%S")
+                i[4] = datetime.date.today().strftime("%d %b %Y")
+            notes.append(i)
+    with open(path, 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=";")
+        for i in notes:
+            writer.writerow(i)

@@ -6,12 +6,15 @@ def print_menu():
     print("4 - Отредактировать заметку ")
     print("5 - Удалить заметку ")
     print("0 - Завершение работы ")
+    print()
 
 def print_comand_not_exist():
     print("Команды с введенным номером не существует")
+    print()
 
 def print_note_not_exist():
     print("Заметки с введенным номером не существует")
+    print()
 
 def print_note_in_list(note):
     print(str(note[0]) + ' ' + note[1] + ' ' + str(note[3]) + ' ' + str(note[4]))

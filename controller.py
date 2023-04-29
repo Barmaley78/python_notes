@@ -18,13 +18,16 @@ def app():
                 if len(notes) != 0:
                     for i in notes:
                         print_note_in_list(i)
+                    print()
                 else:
                     print("Список заметок пуст")
+                    print()
             case 3:
                 id = int(input("Введите номер заметки для чтения "))
                 read_note("notes.csv", id)
             case 4:
                 id = int(input("Введите номер заметки для редактирования "))
+                edit_note("notes.csv", id)
             case 5:
                 id = int(input("Введите номер заметки для удаления "))
                 delete_note("notes.csv", id)
