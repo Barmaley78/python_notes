@@ -21,13 +21,13 @@ def app():
                 else:
                     print("Список заметок пуст")
             case 3:
-                print(3)
+                id = int(input("Введите номер заметки для чтения "))
+                read_note("notes.csv", id)
             case 4:
-                print(4)
+                id = int(input("Введите номер заметки для редактирования "))
             case 5:
-                print(5)
-            case 6:
-                print(6)
+                id = int(input("Введите номер заметки для удаления "))
+                delete_note("notes.csv", id)
             case 0:
                 break
             case _:
