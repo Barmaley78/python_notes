@@ -1,14 +1,23 @@
-# from  model import *
+from  model import *
 from view import *
 
 def app():
     command_number = 10
+    if notes_file_exist("notes.csv"):
+        create_notes_file("notes.csv")
+    
+    
     while command_number != 0:
         print_menu()
         command_number = int(input())
         match command_number:
             case 1:
-                print(1)
+                notes = notes_file_read("notes.csv")
+                if len(notes) != 0:
+                    for i in notes:
+                        print(i)
+                else:
+                    print("Список заметок пуст")
             case 2:
                 print(2)
             case 3:

@@ -9,3 +9,4 @@ def print_menu():
 
 def print_comand_not_exist():
     print("Команды с введенным номером не существует")
+
