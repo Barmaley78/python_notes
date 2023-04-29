@@ -34,7 +34,7 @@ def add_note(path):
         note.append(note_name)
         note.append(note_text)
         note.append(datetime.datetime.now().strftime("%H:%M:%S"))
-        note.append(datetime.date.today().strftime("%d %b %Y"))
+        note.append(datetime.date.today().strftime("%d.%m.%Y"))
         writer.writerow(note)
 
 def read_note(path, id):
@@ -80,3 +80,12 @@ def edit_note(path, id):
         writer = csv.writer(file, delimiter=";")
         for i in notes:
             writer.writerow(i)
+
+def filter_by_date(path, date):
+    notes = []
+    with open(path, 'r') as file:
+        reader = csv.reader(file, delimiter=";")
+        for i in reader:
+            if i[4] == date:
+                notes.append(i)
+    return notes
